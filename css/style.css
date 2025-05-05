@@ -91,7 +91,7 @@ h1 {
   color: #aaa;
 }
 
-.search-button {
+.main-search-button {
   position: absolute;
   right: 5px;
   top: 5px;
@@ -108,6 +108,6 @@ h1 {
 /* ADDITIONAL STYLES
 /*******************************************/
 
-.search-button:hover {
+.main-search-button:hover {
   background-color: #0052a3;
 }
