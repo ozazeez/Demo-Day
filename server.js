@@ -3,7 +3,7 @@
 
 // set up ======================================================================
 // get all the tools we need
-const axios = require('axios');
+// const axios = require('axios');
 var express  = require('express');
 var app      = express();
 var port     = process.env.PORT || 8000;

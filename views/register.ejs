@@ -14,19 +14,22 @@
 </head>
 
 <body>
+    <header>
     <div class="logo">
         <div class="logo-top">My Reef Tree</div>
     </div>
     <nav>
-        <a href="/signin">Sign in</a>
-        <a href="/signup">Sign up</a>
+        <a href="/login">Log In</a>
+        <a href="/register">Register</a>
+        <a href="/">Home</a>
     </nav>
     </header>
 
     <main>
-        <h1>Welcome back to My Reef Tree</h1>
+        <h1>Welcome to My Reef Tree</h1>
 
-        <form class="signin-form">
+        <form class="register-form">
+            <h2>Create an account</h2>
             <div class="form-group">
                 <label for="email">Email</label>
                 <input type="email" id="email" name="email" placeholder="Enter your email" required>
@@ -36,23 +39,18 @@
                 <label for="password">Password</label>
                 <input type="password" id="password" name="password" placeholder="Enter your password" required>
             </div>
-
-            <div class="form-options">
-                <div class="remember-me">
-                    <input type="checkbox" id="remember" name="remember">
-                    <label for="remember">Remember me</label>
-                </div>
-                <a href="#" class="forgot-password">Forgot password?</a>
+            <div class="form-group">
+                <label for="password">Confirm Password</label>
+                <input type="password" id="password" name="confirm-password" placeholder="Password (again)" required>
             </div>
 
-            <button type="submit" class="signin-button">Sign In</button>
+            <button type="submit" class="register-button">Register</button>
 
-            <div class="signup">
-                Don't have an account? <a href="/signup">Sign Up</a>
-            </div>
         </form>
+        <div class="login">
+            Already have an account? <a href="/login"><button>Log In</button></a>
+        </div>
     </main>
-
     <script type="text/javascript" src="js/main.js"></script>
 </body>
 

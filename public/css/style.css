@@ -11,6 +11,8 @@
 /******************************************
 /* LAYOUT
 /*******************************************/
+@import "tailwindcss" ;
+@import "daisyui";
 
 body {
   background-color: #f0f8ff;
@@ -71,13 +73,13 @@ h1 {
   color: #0066cc;
 }
 
-.search-container {
+.welcome {
   width: 100%;
   max-width: 600px;
   position: relative;
 }
 
-.search-input {
+.get-input {
   width: 100%;
   padding: 15px 20px;
   border: 2px solid #0066cc;
@@ -91,7 +93,7 @@ h1 {
   color: #aaa;
 }
 
-.main-search-button {
+.get-started-button {
   position: absolute;
   right: 5px;
   top: 5px;
