@@ -2,7 +2,7 @@ module.exports = function(app, passport, db, axios) {
 
 // normal routes ===============================================================
 
-    // show the home page (will also have our signin links)
+    // show the home page (will also have our login links)
     app.get('/', function(req, res) {
         res.render('index.ejs');
     });
@@ -29,33 +29,33 @@ module.exports = function(app, passport, db, axios) {
 // Profile board routes ===============================================================
 
 // =============================================================================
-// AUTHENTICATE (FIRST signin) ==================================================
+// AUTHENTICATE (FIRST login) ==================================================
 // =============================================================================
 
     // locally --------------------------------
-        // signin ===============================
-        // show the signin form
-        app.get('/signin', function(req, res) {
-            res.render('signin.ejs', { message: req.flash('signinMessage') });
+        // login ===============================
+        // show the login form
+        app.get('/login', function(req, res) {
+            res.render('login.ejs', { message: req.flash('loginMessage') });
         });
 
-        // process the signin form
-        app.post('/signin', passport.authenticate('local-signin', {
+        // process the login form
+        app.post('/login', passport.authenticate('local-login', {
             successRedirect : '/profile', // redirect to the secure profile section
-            failureRedirect : '/signin', // redirect back to the signup page if there is an error
+            failureRedirect : '/login', // redirect back to the register page if there is an error
             failureFlash : true // allow flash kit
         }));
 
-        // SIGNUP =================================
-        // show the signup form
-        app.get('/signup', function(req, res) {
-            res.render('signup.ejs', { message: req.flash('signupMessage') });
+        // register =================================
+        // show the register form
+        app.get('/register', function(req, res) {
+            res.render('register.ejs', { message: req.flash('registerMessage') });
         });
 
-        // process the signup form
-        app.post('/signup', passport.authenticate('local-signup', {
+        // process the register form
+        app.post('/register', passport.authenticate('local-register', {
             successRedirect : '/profile', // redirect to the secure profile section
-            failureRedirect : '/signup', // redirect back to the signup page if there is an error
+            failureRedirect : '/register', // redirect back to the register page if there is an error
             failureFlash : true // allow flash kit
         }));
 
