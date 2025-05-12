@@ -1,6 +1,10 @@
 /******************************************
 /* CSS
 /*******************************************/
+@import 'tailwindcss';
+@plugin 'daisyui';
+
+
 
 /* Box Model Hack */
 * {
@@ -11,8 +15,7 @@
 /******************************************
 /* LAYOUT
 /*******************************************/
-@import "tailwindcss" ;
-@import "daisyui";
+
 
 body {
   background-color: #f0f8ff;
@@ -20,7 +23,7 @@ body {
   display: flex;
   flex-direction: column;
   min-height: 100em;
-}
+} */
 
 header {
   display: flex;
@@ -92,19 +95,6 @@ h1 {
 .search-input::placeholder {
   color: #aaa;
 }
-
-.get-started-button {
-  position: absolute;
-  right: 5px;
-  top: 5px;
-  background-color: #0066cc;
-  color: white;
-  border: none;
-  border-radius: 25px;
-  padding: 10px 25px;
-  font-weight: bold;
-}
-
 
 /******************************************
 /* ADDITIONAL STYLES

@@ -9,14 +9,14 @@
     <title>My Reef Tree</title>
 
     <!-- external CSS link -->
-    <link rel="stylesheet" href="css/normalize.css">
-    <link rel="stylesheet" href="css/style.css">
+    <link href="/css/output.css" rel="stylesheet">
+
 </head>
 
 <body>
     <header>
     <div class="logo">
-        <div class="logo-top">My Reef Tree</div>
+        <div class="logo-top"><a href="/">My Reef Tree</a></div>
     </div>
     <nav>
         <a href="/login">Log in</a>
@@ -28,8 +28,21 @@
 
     <main>
         <h1>Welcome back to My Reef Tree</h1>
+        
+        <fieldset class="fieldset bg-base-200 border-base-300 rounded-box w-xs border p-4">
+            <legend class="fieldset-legend">Login</legend>
+          
+            <label class="label">Email</label>
+            <input type="email" class="input" placeholder="Email" />
+          
+            <label class="label">Password</label>
+            <input type="password" class="input" placeholder="Password" />
+          
+            <button class="btn btn-neutral mt-4">Login</button>
+          </fieldset>
 
-        <form class="login-form">
+
+        <!-- <form class="login-form">
             <h2>Log In</h2>
             <div class="form-group">
                 <label for="email">Email</label>
@@ -44,7 +57,7 @@
 
             <div class="form-options">
                 <a href="#" class="forgot-password">Forgot password?</a>
-            </div>
+            </div> -->
 
 
         </form>
@@ -53,7 +66,7 @@
         </div>
     </main>
 
-    <script type="text/javascript" src="js/main.js"></script>
+    <script type="text/javascript" src="/js/main.js"></script>
 </body>
 
 </html>
