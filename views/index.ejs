@@ -3,43 +3,57 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="description" content="This is where your description goes">
-    <meta name="keywords" content="one, two, three">
-
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Track and grow your reef aquarium">
     <title>My Reef Tree</title>
-
-    <!-- external CSS link -->
-
     <link href="/css/output.css" rel="stylesheet">
 </head>
 
-<body class="bg-main-light">
-    <header>
-    <div class="logo">
-        <div class="logo-top"><a href="/">My Reef Tree</a></div>
-    </div>
-    <nav>
-        <a href="/login">Log In</a>
-        <a href="/register">Register</a>
-    </nav>
+<body class="min-h-screen flex flex-col" className="bg-primary" className="landing">
+    <!-- Navbar -->
+
+    <header class="bg-base-100 shadow-sm" className="bg-secondary">
+        <div className="navbar bg-primary-100 shadow-sm">
+            <a href="/" class="text-xl font-bold">My Reef Tree</a>
+            <a href="/login" className="btn btn-ghost text-xl">Login</a>
+            <a href="/register" className="btn btn-ghost text-xl">Register</a>
+          </div>
+        <!-- <div class="navbar container mx-auto px-4">
+            <div class="flex-1">
+                <a href="/" class="text-xl font-bold">My Reef Tree</a>
+            </div> -->
+            <!-- <div class="flex-none">
+                <ul class="menu menu-horizontal px-1">
+                    <li><a href="/login" class="btn btn-ghost">Log In</a></li>
+                    <li><a href="/register" class="btn btn-primary">Register</a></li>
+                </ul>
+            </div> -->
+        <!-- </div> -->
     </header>
 
-    <main>
-        <h1 class="text-3xl font-bold underline">Plan Your Reef. Track Your Growth.</h1>
-
-        <div class="welcome">
-            <a href="/login"><button class="btn btn-dash">Get Started</button></a>
+    <!-- Main Content -->
+    <main class="flex-grow container mx-auto px-4 py-8">
+        <div class="card w-full max-w-md bg-coral text-white shadow-md mx-auto">
+            <div class="card-body items-center text-center">
+                <h1 class="text-3xl font-bold">Plan Your Reef.</h1>
+                <h1 class="text-3xl font-bold mb-4">Track Your Growth.</h1>
+                <p class="mb-6">Start building your perfect reef aquarium setup today</p>
+                <a href="/login" class="btn btn-primary rounded-full px-8">Get Started</a>
+            </div>
         </div>
     </main>
-    <div id="footer">
-		<ul class="copyright">
-			<li>&copy; Untitled. All rights reserved.</li>
-			<li><a href="https://wwww.azeezolaosebikan.com">Contact</a></li>
-			<li><a href="/login">Login</a></li>
-			<li><a href="/register">Register</a></li>
-		</ul>
-	</div>
-    <script type="text/javascript" src="/js/main.js"></script>
+
+    <!-- Footer -->
+    <footer class="bg-base-100 py-6 mt-auto">
+        <div class="container mx-auto px-4">
+            <ul class="flex flex-wrap justify-center gap-4">
+                <li>&copy; My Reef Tree. All rights reserved.</li>
+                <li><a href="https://www.azeezolaosebikan.com" class="link link-hover">Contact</a></li>
+                <li><a href="/login" class="link link-hover">Login</a></li>
+                <li><a href="/register" class="link link-hover">Register</a></li>
+            </ul>
+        </div>
+    </footer>
 </body>
 
 </html>
