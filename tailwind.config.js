@@ -1,18 +1,34 @@
-// tailwind.config.js
+//tailwind.config.js
 // module.exports = {
-//   content: ["./views/**/*.ejs", "./public/css/**/*.js"],
+//   content: ["./views/**/*.ejs", "./public/**/*.js"],
 //   theme: {
-//     extend: {
-//       colors: {
-//         main: {
-//           dark: '#0A2463',
-//           teal: '#2CCED2',
-//           coral: '#FF6B6B',
-//           light: '#F5F0E6',
-//           sea: '#88C9BF'
-//         }
-//       },
-//     },
+//     extend: {},
 //   },
 //   plugins: [require("daisyui")],
 // }
+module.exports = {
+  content: ['./src/**/*.{js,jsx,ejs,html}'], // adjust as needed
+  theme: {
+    extend: {
+      colors: {
+        primary: '#0A2463',
+        secondary: '#FF6B6B',
+        accent: '#F5F0E6',
+        sea: '#88C9BF',
+      },
+    },
+  },
+  plugins: [require('daisyui')],
+  daisyui: {
+    themes: [
+      {
+        mytheme: {
+          primary: '#0A2463',
+          secondary: '#FF6B6B',
+          accent: '#F5F0E6',
+          sea: '#88C9BF',
+        },
+      },
+    ],
+  },
+}

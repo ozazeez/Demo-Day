@@ -24,17 +24,23 @@
 
     <main>
         <h1>Plan Your Reef. Track Your Growth.</h1>
-        <option value=""></option>
-        <% tanks[1] %>
+
+        <% for(let component of components){ %>
+            <p><%= component.name %></p>
+            <p><%= component.desc %></p>
+            <img src="<%= component.image %>">
+            <button data-id="<%= component._id %>">Select</button>
+            <% } %>
+
     </main>
     <div id="footer">
-		<ul class="copyright">
-			<li>&copy; Azeez. All rights reserved.</li>
-			<li><a href="https://wwww.azeezolaosebikan.com">Contact</a></li>
-			<li><a href="/login">Login</a></li>
-			<li><a href="/register">Register</a></li>
-		</ul>
-	</div>
+        <ul class="copyright">
+            <li>&copy; Azeez. All rights reserved.</li>
+            <li><a href="https://wwww.azeezolaosebikan.com">Contact</a></li>
+            <li><a href="/login">Login</a></li>
+            <li><a href="/register">Register</a></li>
+        </ul>
+    </div>
     <script type="text/javascript" src="/js/main.js"></script>
 </body>
 

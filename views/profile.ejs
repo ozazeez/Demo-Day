@@ -13,28 +13,33 @@
 
 </head>
 
-<body>
-    <header>
-    <div class="logo">
-        <div class="logo-top"><a href="/">My Reef Tree</a></div>
-    </div>
-    <nav>
-        <a href="/">Home</a>
-        <a href="#">Sign out</a>
-    </nav>
+<body class="profile">
+     <!-- Navbar -->
+     <header class="bg-base-100 shadow-sm">
+        <div class="navbar container mx-auto px-4">
+            <div class="flex-1">
+                <a href="/" class="text-xl font-bold">My Reef Tree</a>
+            </div>
+            <div class="flex-none">
+                <ul class="menu menu-horizontal px-1">
+                    <li><a href="/login" class="btn btn-ghost">Log In</a></li>
+                    <li><a href="/register" class="btn btn-primary">Register</a></li>
+                </ul>
+            </div>
+        </div>
     </header>
-    <h1>My build</h1>
-    <main>
+    <main className="bg-accent">
         
     </main>
     <div id="footer">
-		<ul class="copyright">
-			<li>&copy; Untitled. All rights reserved.</li>
-			<li><a href="https://wwww.azeezolaosebikan.com">Contact</a></li>
-			<li><a href="/login">Login</a></li>
-			<li><a href="/register">Register</a></li>
-		</ul>
-	</div>
+        <ul class="copyright">
+            <li>&copy; Untitled. All rights reserved.</li>
+            <li><a href="https://wwww.azeezolaosebikan.com">Contact</a></li>
+            <li><a href="/login">Login</a></li>
+            <li><a href="/register">Register</a></li>
+            <li><a href="/build">Builds</a></li>
+        </ul>
+    </div>
     <script type="text/javascript" src="/js/main.js"></script>
 </body>
 

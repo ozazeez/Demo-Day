@@ -53,9 +53,6 @@ app.use(flash()); // use connect-flash for flash recipes stored in session
 
 
 // launch ======================================================================
-app.listen(port);
-console.log('The magic happens on port ' + port);
-
 app.delete('/kits', (req, res) => {
   var userId = req.user._id
   db.collection('kit').findOneAndDelete({userId: userId, name: req.body.name,}, (err, result) => {
@@ -63,3 +60,7 @@ app.delete('/kits', (req, res) => {
     res.send('Kit deleted!')
   })
 })
+
+app.listen(port);
+console.log('The magic happens on port ' + port);
+
