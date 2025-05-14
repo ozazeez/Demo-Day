@@ -3,15 +3,7 @@
 /*******************************************/
 @import 'tailwindcss';
 
-@plugin "daisyui" {
-  root: ":root";
-  themes: light --default, dark --prefersdark;
-  include: ;
-  exclude: ;
-  prefix: ;
-  logs: true;
-};
-
+@plugin "daisyui";
 
 
 /* Box Model Hack */

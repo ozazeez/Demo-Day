@@ -1,46 +1,144 @@
 <!DOCTYPE html>
-<html lang="en">
-
+<html lang="en" data-theme="reefTheme">
 <head>
     <meta charset="utf-8">
-    <meta name="description" content="This is where your description goes">
-    <meta name="keywords" content="one, two, three">
-
-    <title>My Reef Tree</title>
-
-    <!-- external CSS link -->
-    <link href="/css/output.css" rel="stylesheet">
-
+    <meta name="description" content="Manage your aquarium builds with ReefTree">
+    <meta name="keywords" content="reef, aquarium, builds, tracker">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Builds | ReefTree</title>
+    <link rel="stylesheet" href="output.css">
+    <!-- Tailwind & DaisyUI CSS -->
+    <!-- <link href="https://cdn.jsdelivr.net/npm/daisyui@3.9.4/dist/full.css" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script> -->
+    <!-- <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        reef: {
+                            dark: '#0A2463',
+                            teal: '#2CCED2',
+                            coral: '#FF6B6B',
+                            light: '#F5F0E6',
+                            sea: '#88C9BF'
+                        }
+                    }
+                }
+            }
+        }
+    </script> -->
+    <!-- <style>
+        .reef-card {
+            transition: all 0.3s ease;
+            border: 1px solid #88C9BF;
+        }
+        .reef-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(10, 36, 99, 0.1);
+        }
+        .reef-image {
+            height: 200px;
+            object-fit: cover;
+            border-bottom: 1px solid #88C9BF;
+        }
+    </style> -->
 </head>
 
-<body class="profile">
-     <!-- Navbar -->
-     <header class="bg-base-100 shadow-sm">
-        <div class="navbar container mx-auto px-4">
+<body class="bg-reef-light min-h-screen flex flex-col">
+    <!-- Navigation -->
+    <nav class="navbar bg-reef-dark text-reef-light shadow-lg">
+        <div class="container mx-auto px-4">
             <div class="flex-1">
-                <a href="/" class="text-xl font-bold">My Reef Tree</a>
+                <a href="/" class="btn btn-ghost normal-case text-xl text-reef-light">ReefTree</a>
             </div>
             <div class="flex-none">
                 <ul class="menu menu-horizontal px-1">
-                    <li><a href="/login" class="btn btn-ghost">Log In</a></li>
-                    <li><a href="/register" class="btn btn-primary">Register</a></li>
+                    <li><a href="/build" class="text-reef-light hover:text-reef-teal">Builder</a></li>
+                    <li><a href="/logout" class="text-reef-light bg-reef-coral hover:bg-reef-teal ml-2">Logout</a></li>
                 </ul>
             </div>
         </div>
-    </header>
-    <main className="bg-accent">
-        
+    </nav>
+
+    <!-- Main Content -->
+    <main class="flex-grow container mx-auto px-4 py-8">
+        <div class="text-center mb-12">
+            <h1 class="text-4xl font-bold text-reef-dark mb-2">Plan Your Reef</h1>
+            <p class="text-xl text-reef-teal">Track Your Growth</p>
+            <a href="/builds/new" class="btn bg-reef-teal border-reef-teal hover:bg-reef-coral text-white mt-6">
+                + Create New Build
+            </a>
+        </div>
+
+        <!-- Builds Grid -->
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <% for(let build of builds){ %>
+            <div class="card reef-card bg-white shadow-md">
+                <figure>
+                    <img src="<%= build.image || 'https://via.placeholder.com/400x200?text=Reef+Build' %>" 
+                         alt="<%= build.name %>" 
+                         class="reef-image w-full">
+                </figure>
+                <div class="card-body">
+                    <h2 class="card-title text-reef-dark"><%= build.name %></h2>
+                    <p class="text-gray-600"><%= build.description || 'No description' %></p>
+                    <div class="mt-4">
+                        <div class="badge badge-outline border-reef-teal text-reef-teal mr-2">
+                            <%= build.components.length %> Components
+                        </div>
+                        <div class="badge badge-outline border-reef-coral text-reef-coral">
+                            $<%= build.totalPrice.toFixed(2) %>
+                        </div>
+                    </div>
+                    <div class="card-actions justify-end mt-4">
+                        <a href="/builds/<%= build._id %>" 
+                           class="btn btn-sm bg-reef-teal border-reef-teal hover:bg-reef-coral text-white">
+                            View Details
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <% } %>
+        </div>
+
+        <!-- Empty State -->
+        <% if(builds.length === 0){ %>
+        <div class="text-center py-12">
+            <div class="w-32 h-32 mx-auto mb-6 text-reef-teal">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4" />
+                </svg>
+            </div>
+            <h2 class="text-2xl font-bold text-reef-dark mb-2">No Builds Yet</h2>
+            <p class="text-gray-600 mb-6">Start by creating your first reef tank build</p>
+            <a href="/builds/new" class="btn bg-reef-teal border-reef-teal hover:bg-reef-coral text-white">
+                Create Your First Build
+            </a>
+        </div>
+        <% } %>
     </main>
-    <div id="footer">
-        <ul class="copyright">
-            <li>&copy; Untitled. All rights reserved.</li>
-            <li><a href="https://wwww.azeezolaosebikan.com">Contact</a></li>
-            <li><a href="/login">Login</a></li>
-            <li><a href="/register">Register</a></li>
-            <li><a href="/build">Builds</a></li>
-        </ul>
-    </div>
+
+    <!-- Footer -->
+    <footer class="footer p-10 bg-reef-sea text-reef-light">
+        <div class="container mx-auto px-4">
+            <div>
+                <span class="footer-title text-reef-light">ReefTree</span> 
+                <a href="/about" class="link link-hover text-reef-light">About us</a>
+                <a href="/contact" class="link link-hover text-reef-light">Contact</a>
+                <a href="/privacy" class="link link-hover text-reef-light">Privacy policy</a>
+            </div> 
+            <div>
+                <span class="footer-title text-reef-light">Resources</span> 
+                <a href="/guides" class="link link-hover text-reef-light">Beginner's Guide</a>
+                <a href="/blog" class="link link-hover text-reef-light">Blog</a>
+                <a href="/forum" class="link link-hover text-reef-light">Community</a>
+            </div> 
+        </div>
+        <div class="container mx-auto px-4 pt-6 text-center">
+            <p>&copy; 2023 ReefTree. All rights reserved.</p>
+        </div>
+    </footer>
+
     <script type="text/javascript" src="/js/main.js"></script>
 </body>
-
 </html>
