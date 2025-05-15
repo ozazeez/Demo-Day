@@ -8,23 +8,71 @@ module.exports = function (app, passport, db, axios) {
     });
 
     // PROFILE SECTION =========================
-    app.get('/profile', isLoggedIn, function (req, res) {
-        var userId = req.user._id
-        db.collection('kit').aggregate([{$match:{ userId: req.user._id }},{$lookup:{from: "components",
-            localField: "components",
-            foreignField: "_id",
-            as: "components_info"}}]).toArray((err, result) => {
-            if (err) return console.log(err)
-                console.log(result[0].components_info)
-            res.render('profile.ejs', {
-                user: req.user,
-                kit: result
-            })
-        })
-    });
+    const { ObjectId } = require('mongodb'); // Ensure this is at the top
 
-    // SIGNOUT ==============================
-    app.get('/signout', function (req, res) {
+    app.get('/profile', isLoggedIn, function (req, res) {
+        db.collection('kit').find({ userId: req.user._id }).toArray((err, kits) => {
+            if (err) return console.log(err);
+    
+            if (!kits || kits.length === 0) {
+                return res.render('profile.ejs', {
+                    user: req.user,
+                    kits: []
+                });
+            }
+    
+            const allComponentIds = [];
+            kits.forEach(kit => {
+                if (kit.components && kit.components.length > 0) {
+                    allComponentIds.push(...kit.components);
+                }
+            });
+    
+      
+            const isValidObjectId = id => /^[0-9a-fA-F]{24}$/.test(id);
+            const objectIds = allComponentIds
+                .filter(isValidObjectId)
+                .map(id => new ObjectId(id));
+    
+            db.collection('components').find({
+                _id: { $in: objectIds }
+            }).toArray((err, components) => {
+                if (err) return console.log(err);
+    
+               
+                const componentMap = {};
+                components.forEach(comp => {
+                    componentMap[comp._id.toString()] = {
+                        name: comp.name,
+                        image: comp.image 
+                    };
+                });
+    
+        
+                const enhancedKits = kits.map(kit => ({
+                    _id: kit._id,
+                    name: kit.name || 'Untitled Kit',
+                    components: kit.components.map(id => {
+                        const data = componentMap[id] || {};
+                        return {
+                            id,
+                            name: data.name || `Unknown Component (${id})`,
+                            image: data.image || null
+                        };
+                    })
+                }));
+    
+                res.render('profile.ejs', {
+                    user: req.user,
+                    kits: enhancedKits
+                });
+            });
+        });
+    });
+    
+
+    // LOGNOUT ==============================
+    app.get('/logout', function (req, res) {
         req.logout(() => {
             console.log('User has signed out!')
         });
@@ -55,7 +103,8 @@ module.exports = function (app, passport, db, axios) {
 
             if (result.length > 0) {
 
-                kitData._id = result[0]._id;
+                kitData._id = result._id;
+              
             }
 
             db.collection('kit').save(kitData, (err, result) => {
@@ -91,7 +140,7 @@ module.exports = function (app, passport, db, axios) {
 
     // process the register form
     app.post('/register', passport.authenticate('local-register', {
-        successRedirect: '/login', // redirect to the secure profile section
+        successRedirect: '/profile', // redirect to the secure profile section
         failureRedirect: '/register', // redirect back to the register page if there is an error
         failureFlash: true // allow flash kit
     }));

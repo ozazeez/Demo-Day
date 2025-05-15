@@ -1,9 +1,10 @@
 /******************************************
 /* CSS
 /*******************************************/
-@import 'tailwindcss';
 
+@import 'tailwindcss';
 @plugin "daisyui";
+
 
 
 /* Box Model Hack */
@@ -15,51 +16,16 @@
 /******************************************
 /* LAYOUT
 /*******************************************/
-.profile{
+.hero-bg {
+  background-image: url('https://res.cloudinary.com/de3nl8aps/image/upload/v1747280513/myreeftreeShark_m74dx7.jpg');
+  background-size: cover;
+  background-position: center;
+}
+
+.profile {
   background-color: #88C9BF;
-  }
-
-/* body {
-
-  color: #003366;
-  display: flex;
-  flex-direction: column;
-  min-height: 100em;
 }
 
- header {
-  display: flex;
-  justify-content: space-between;
-  padding: 20px 40px;
-  align-items: center;
-}
-
-
-
-nav a {
-  text-decoration: none;
-  color: #003366;
-  font-weight: 500;
-  padding: 8px 15px;
-  border-radius: 4px;
-}
-
-nav a:hover {
-  background-color: rgba(0, 51, 102, 0.1);
-}
-
-
-h1 {
-  font-size: 32px;
-  margin-bottom: 30px;
-  color: #0066cc;
-}
-
-.welcome {
-  width: 100%;
-  max-width: 600px;
-  position: relative;
-} */
 main {
   display: flex;
   flex-direction: column;
@@ -68,6 +34,7 @@ main {
   padding: 40px 20px;
   text-align: center;
 }
+
 .logo {
   display: flex;
   flex-direction: column;
@@ -93,32 +60,80 @@ header {
   flex-direction: row;
 }
 
-header li a{
-display: block;
+header li a {
+  display: block;
 
 }
+
 /******************************************
 /* ADDITIONAL STYLES
 /*******************************************/
-.landing{
-background-color: #88C9BF;
+.landing {
+  background-color: #88C9BF;
 }
-.form-text{
+
+.form-text {
   color: white;
 }
 
-    .bg-primary {
-      background-color: #0A2463;
-    }
-    
-    .bg-secondary {
-      background-color: #FF6B6B;
-    }
-    .bg-accent {
-      background-color: #F5F0E6;
-    }
-    .bg-sea {
-      background-color: #88C9BF;
-    }
+.bg-primary {
+  background-color: #0A2463;
+}
 
-    
+.bg-secondary {
+  background-color: #FF6B6B;
+}
+
+.bg-accent {
+  background-color: #F5F0E6;
+}
+
+.bg-sea {
+  background-color: #88C9BF;
+}
+
+.reef-card {
+  transition: all 0.3s ease;
+  border: 1px solid #88C9BF;
+}
+
+.reef-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 20px rgba(10, 36, 99, 0.1);
+}
+
+.reef-image {
+  height: 200px;
+  object-fit: contain;
+  border-bottom: 1px solid #88C9BF;
+}
+
+.component-checkbox:checked+.component-card {
+  border-color: #2CCED2;
+  box-shadow: 0 0 0 3px rgba(44, 206, 210, 0.2);
+}
+
+.profile-reef-card {
+  transition: all 0.3s ease;
+  border: 1px solid #88C9BF;
+}
+
+.profile-reef-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 20px rgba(10, 36, 99, 0.1);
+}
+
+.profile-reef-image {
+  height: 200px;
+  object-fit: cover;
+  border-bottom: 1px solid #88C9BF;
+}
+
+.build-image {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  border-radius: 0.5rem;
+  border: 1px solid #88C9BF;
+  margin-bottom: 1rem;
+}
