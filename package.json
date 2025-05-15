@@ -25,5 +25,8 @@
     "passport-local": "~1.0.0",
     "passport-twitter": "^0.1.5",
     "tailwindcss": "^4.1.6"
+  },
+  "scripts": {
+    "build:css": "npx @tailwindcss/cli -i public/css/style.css -o public/css/output.css"
   }
 }
